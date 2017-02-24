@@ -28,7 +28,9 @@ class ContactDetailViewController: UIViewController {
     // MARK: - UI Actions
     
     @IBAction func saveContactButtonTapped(_ sender: Any) {
-        guard let contact = contact else {
+        guard let contact = contact, let name = nameTextField.text,
+            let phoneNumber = phoneNumberTextField.text,
+            let email = emailTextField.text else {
             guard let name = nameTextField.text,
                 let phoneNumber = phoneNumberTextField.text,
                 let email = emailTextField.text,
@@ -37,9 +39,13 @@ class ContactDetailViewController: UIViewController {
             ContactController.shared.create(contact: contact)
             let _ = navigationController?.popViewController(animated: true)
             return }
-        contact.cloudKitRecord.setValue(nameTextField.text, forKeyPath: Keys.nameKey)
-        contact.cloudKitRecord.setValue(phoneNumberTextField.text, forKeyPath: Keys.phoneNuberKey)
-        contact.cloudKitRecord.setValue(emailTextField.text, forKeyPath: Keys.emailKey)
+        contact.name = name
+        contact.phoneNumber = phoneNumber
+        contact.email = email
+        contact.cloudKitRecord.setValue(contact.name, forKeyPath: Keys.nameKey)
+        contact.cloudKitRecord.setValue(contact.phoneNumber, forKeyPath: Keys.phoneNuberKey)
+        contact.cloudKitRecord.setValue(contact.email, forKeyPath: Keys.emailKey)
+        
         let _ = navigationController?.popViewController(animated: true)
     }
     

@@ -11,7 +11,7 @@ import CloudKit
 
 extension Contact {
     
-    init?(cloudKitRecord: CKRecord) {
+     convenience init?(cloudKitRecord: CKRecord) {
         guard let name = cloudKitRecord[Keys.nameKey] as? String,
             let phoneNumber = cloudKitRecord[Keys.phoneNuberKey] as? String,
             let email = cloudKitRecord[Keys.emailKey] as? String else { return nil }

@@ -8,10 +8,16 @@
 
 import Foundation
 
-struct Contact {
+class Contact {
     
-    let name: String
-    let phoneNumber: String?
-    let email: String?
+    var name: String
+    var phoneNumber: String?
+    var email: String?
+    
+    init(name: String, phoneNumber: String, email: String) {
+        self.name = name
+        self.phoneNumber = phoneNumber
+        self.email = email
+    }
     
 }
