@@ -36,13 +36,17 @@ class ContactListTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Saving For Black Diamond
+   // MARK: - Saving For Black Diamond
     
-    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            tableView.deleteRows(at: [indexPath], with: .fade)
-    //        }
-    //    }
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                let contact = ContactController.shared.contacts[indexPath.row]
+                guard let recordID = contact.recordID else { return }
+                ContactController.shared.deleteContactWith(recordID: recordID)
+                ContactController.shared.removeContactFromArray(contact: contact)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
     
     func postsWereUpdated() {
         tableView.reloadData()

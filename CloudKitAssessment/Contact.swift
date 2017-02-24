@@ -7,16 +7,22 @@
 //
 
 import Foundation
+import CloudKit
 
-class Contact {
+class Contact: Equatable {
     
     var name: String
     var phoneNumber: String?
     var email: String?
+    var recordID: CKRecordID?
     
     init(name: String, phoneNumber: String, email: String) {
         self.name = name
         self.phoneNumber = phoneNumber
         self.email = email
     }
+}
+
+func ==(lhs: Contact, rhs: Contact) -> Bool {
+    return lhs === rhs
 }

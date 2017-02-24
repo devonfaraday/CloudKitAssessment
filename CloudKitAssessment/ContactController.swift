@@ -31,6 +31,13 @@ class ContactController {
         refreshData()
     }
     
+    // MARK: - Local Crud
+    
+    func removeContactFromArray(contact: Contact) {
+        guard let index = contacts.index(of: contact) else { return }
+        contacts.remove(at: index)
+    }
+    
     // MARK: - Cloud Kit Functions
     
     func create(contact: Contact, completion: @escaping ((Error?) -> Void) = { _ in }) {
@@ -53,6 +60,14 @@ class ContactController {
             }
             guard let records = records else { return }
             self.contacts = records.flatMap { Contact(cloudKitRecord: $0) }
+        }
+    }
+    
+    func deleteContactWith(recordID: CKRecordID, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        cloudKitManager.publicDatabase.delete(withRecordID: recordID) { (_, error) in
+            if let error = error {
+                NSLog("Error in deleting \(recordID).\n\(error.localizedDescription)")
+            }
         }
     }
     

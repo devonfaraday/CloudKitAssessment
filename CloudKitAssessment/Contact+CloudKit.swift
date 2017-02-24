@@ -15,7 +15,9 @@ extension Contact {
         guard let name = cloudKitRecord[Keys.nameKey] as? String,
             let phoneNumber = cloudKitRecord[Keys.phoneNuberKey] as? String,
             let email = cloudKitRecord[Keys.emailKey] as? String else { return nil }
+        
         self.init(name: name, phoneNumber: phoneNumber, email: email)
+        self.recordID = cloudKitRecord.recordID
     }
     
     var cloudKitRecord: CKRecord {
