@@ -38,11 +38,11 @@ class ContactListTableViewController: UITableViewController {
     
     // MARK: - Saving For Black Diamond
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
+    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //            tableView.deleteRows(at: [indexPath], with: .fade)
+    //        }
+    //    }
     
     func postsWereUpdated() {
         tableView.reloadData()

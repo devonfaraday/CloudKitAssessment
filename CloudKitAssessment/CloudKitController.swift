@@ -31,7 +31,7 @@ class ContactController {
         refreshData()
     }
     
-   // MARK: - Cloud Kit Functions
+    // MARK: - Cloud Kit Functions
     
     func create(contact: Contact, completion: @escaping ((Error?) -> Void) = { _ in }) {
         let record = contact.cloudKitRecord

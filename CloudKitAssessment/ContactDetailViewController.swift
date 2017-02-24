@@ -31,14 +31,14 @@ class ContactDetailViewController: UIViewController {
         guard let contact = contact, let name = nameTextField.text,
             let phoneNumber = phoneNumberTextField.text,
             let email = emailTextField.text else {
-            guard let name = nameTextField.text,
-                let phoneNumber = phoneNumberTextField.text,
-                let email = emailTextField.text,
-                !name.isEmpty else { nameRequiredAlert(); return }
-            let contact = Contact(name: name, phoneNumber: phoneNumber, email: email)
-            ContactController.shared.create(contact: contact)
-            let _ = navigationController?.popViewController(animated: true)
-            return }
+                guard let name = nameTextField.text,
+                    let phoneNumber = phoneNumberTextField.text,
+                    let email = emailTextField.text,
+                    !name.isEmpty else { nameRequiredAlert(); return }
+                let contact = Contact(name: name, phoneNumber: phoneNumber, email: email)
+                ContactController.shared.create(contact: contact)
+                let _ = navigationController?.popViewController(animated: true)
+                return }
         contact.name = name
         contact.phoneNumber = phoneNumber
         contact.email = email

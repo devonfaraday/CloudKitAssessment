@@ -19,5 +19,4 @@ class Contact {
         self.phoneNumber = phoneNumber
         self.email = email
     }
-    
 }
